@@ -12,3 +12,11 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+    
+class Game(db.Model):
+    __tablename__ = 'games'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), nullable=False)
+    genre = db.Column(db.String(80))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)    
